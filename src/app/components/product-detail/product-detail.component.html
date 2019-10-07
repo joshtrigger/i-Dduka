@@ -1,0 +1,10 @@
+<div class="product-detail-card" fxLayout="column wrap">
+  <img src="{{imageUrl}}" alt="product image" />
+  <div class="details" fxLayout="column wrap">
+    <h4> {{productName}} </h4>
+    <p> <strong> {{price | currency:'Shs '}}</strong></p>
+    <p>{{description}}</p>
+    <p>Posted by: <a href="{{user}}"> {{postedBy | titlecase}} </a></p>
+    <button (click)="onClick($event)">Order now</button>
+  </div>
+</div>

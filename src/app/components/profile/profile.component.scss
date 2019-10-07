@@ -1,0 +1,19 @@
+.profile-card{
+  .profile-pics{
+    .cover-photo{
+      height: auto;
+      width: 100%;
+    }
+    .profile-photo{
+      position: absolute;
+      margin-top: 30%;
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  .profile-info{
+    margin-top: 20%;
+  }
+}

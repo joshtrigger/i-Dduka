@@ -1,43 +1,92 @@
-/* Required for full background image */
+$primary-color: #3498db;
+$disbled-btn-color: #96d0f7;
+.home-page-container {
+  height: 100vh;
 
-html,
-body,
-header,
-.view {
-  min-height: 100vh;
-}
-
-@media (max-width: 740px) {
-  html,
-  body,
-  header,
-  .view {
-    height: 1100px;
+  @media screen and (max-width:599px){
+    // width: 100%;
+    // height: 100%;
   }
-}
-@media (min-width: 800px) and (max-width: 850px) {
-  html,
-  body,
-  header,
-  .view {
-    height: 700px;
+
+  .right-side {
+    width: 50%;
+    padding: 20px;
+
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+
+    .login-card {
+      border: 2px solid gray;
+      height: 100%;
+      padding: 20px;
+
+      h2 {
+        font-weight: 900;
+      }
+
+      .login-btn {
+        width: 400px;
+        height: 60px;
+        border-radius: 40px;
+        color: #fff;
+        background-color: $primary-color;
+
+        &:disabled{
+          background-color: $disbled-btn-color;
+        }
+      }
+
+      .input-container {
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 40px;
+      }
+      
+      input {
+        margin-left: 20px;
+        width: 400px;
+        height: 40px;
+        border: none;
+      }
+      ::placeholder {
+        font-weight: 100;
+      }
+
+      img {
+        background-color: aqua;
+        height: 20%;
+        width: 20%;
+        border-radius: 50%;
+      }
+    }
   }
-}
 
-.top-nav-collapse {
-  background-color: #39448c !important;
-}
+  .left-side {
+    background-image: url('/assets/images/jeans-428614_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
 
-.navbar:not(.top-nav-collapse) {
-  background: transparent !important;
-}
+    .layer {
+      background-color: rgba(52, 152, 219, 0.6);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
 
-@media (max-width: 991px) {
-  .navbar:not(.top-nav-collapse) {
-    background: #39448c !important;
+    .left-text {
+      color: #fff;
+
+      h1 {
+        font-size: 80px;
+        font-weight: bolder;
+      }
+      h3 {
+        font-weight: 100;
+      }
+    }
   }
-}
-
-h6 {
-  line-height: 1.7;
 }

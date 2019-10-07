@@ -9,17 +9,32 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { ProductsComponent } from './components/products/products.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { SanitizerPipe } from './pipes/sanitizers/sanitizer.pipe';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, ProductsComponent, NavBarComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    SanitizerPipe,
+    LoaderComponent,
+    ProfileComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    MDBBootstrapModule.forRoot()
+    FlexLayoutModule,
+    MDBBootstrapModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

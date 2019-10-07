@@ -1,49 +1,31 @@
-<!-- Section: Blog v.1 -->
-<section class="my-5">
-
-  <!-- Section heading -->
-  <h2 class="h1-responsive font-weight-bold text-center my-5">Products</h2>
-  <!-- Section description -->
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-lg-5">
-
-      <!-- Featured image -->
-      <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
-        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-lg-7">
-
-      <!-- Category -->
-      <a href="#!" class="green-text">
-        <h6 class="font-weight-bold mb-3">
-          <mdb-icon fas icon="utensils" class="pr-2"></mdb-icon>Food
-        </h6>
-      </a>
-      <!-- Post title -->
-      <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
-      <!-- Excerpt -->
-      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-        placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
-      <!-- Post data -->
-      <p>by <a><strong>Carine Fox</strong></a>, 19/08/2018</p>
-      <!-- Read more button -->
-      <a mdbBtn color="success" mdbWavesEffect>Read more</a>
-
-    </div>
-    <!-- Grid column -->
-
-  </div>
-  <!-- Grid row -->
-
-</section>
-<!-- Section: Blog v.1 -->
+<app-loader [loading]="loading"></app-loader>
+<div 
+class="page-container"
+fxLayout="column wrap"
+gdAreas="header header | side content"
+gdRows="80px auto"
+gdColumns="25% auto"
+>
+<div class="nav-bar" fxLayout="row" fxLayoutAlign="space-between center" gdArea="header">
+  <h2>i-Dduuka</h2>
+  <h2>Products</h2>
+  <button>Log out</button>
+</div>
+<div gdArea="side" class="profile">
+  <app-profile></app-profile>
+</div>
+<div gdArea="content" class="products">
+  <div fxLayout="row wrap" fxLayoutAlign="start end">
+    <app-product-detail
+    *ngFor="let product of products"
+    [productName]='product.name'
+    [price]='product.price'
+    [description]='product.description'
+    [postedBy]='product.postedBy.username'
+    [imageUrl]='product.imagePath'
+    (buttonClick)='placeOrder($event)'
+    >
+  </app-product-detail>
+</div>
+</div>
+</div>

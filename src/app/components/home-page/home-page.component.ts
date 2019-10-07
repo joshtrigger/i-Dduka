@@ -5,7 +5,7 @@ import {
   Validators,
   AbstractControl
 } from '@angular/forms';
-import { UserService } from 'src/app/services/user-service.service';
+import { UserService } from 'src/app/services/users/user-service.service';
 import { AppConfig } from 'src/app/config';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
   loginForm: FormGroup;
   message: string;
   url: string = 'user/login';
-  disabled: boolean = true;
+  disabled: boolean;
   label: string = 'Sign In';
 
   constructor(
@@ -32,15 +32,14 @@ export class HomePageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.disabled = true;
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     this.loginForm.valueChanges.subscribe(() => {
-      if (this.loginForm.status === 'VALID') {
-        this.disabled = false;
-      }
+      this.disabled = this.loginForm.valid ? false : true;
     });
   }
 
@@ -54,34 +53,17 @@ export class HomePageComponent implements OnInit {
     this.disabled = true;
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.log('An error occured: ', error.error.message);
-    } else {
-      console.log(
-        `Something went wrong on the server status ${error.status}, ${
-          error.error.error.message
-        }`
-      );
-    }
-    return throwError('Please try again later');
-  }
-
-  loginInuser() {
+  logInuser() {
     this.hideButton();
-    const payload = this.loginForm.value;
-    this.userService
-      .login(`${AppConfig.BASE_URL}/${this.url}`, payload)
-      .subscribe(
-        response => {
-          this.showButton()
-          // redirect user to products page
-          this.router.navigateByUrl('/products')
-        },
-        err => {
-          this.showButton()
-          this.handleError(err)
-        }
-      );
+    const url = 'https://safe-tundra-59834.herokuapp.com/user/login';
+    this.userService.login(url, this.loginForm.value).subscribe(
+      value => {
+        this.router.navigateByUrl('/products')
+      },
+      err => {
+        console.log(err);
+        this.showButton();
+      }
+    );
   }
 }

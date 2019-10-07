@@ -1,86 +1,45 @@
-<!-- Main navigation -->
-<header>
-  <!-- Full Page Intro -->
-  <div class="view"
-    style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/89.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <!-- Mask & flexbox options-->
-    <div class="mask rgba-indigo-strong d-flex justify-content-center align-items-center">
-      <!-- Content -->
-      <div class="container">
-        <!--Grid row-->
-        <div class="row pt-lg-5 mt-lg-5">
-          <!--Grid column-->
-          <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left wow fadeInLeft"
-            data-wow-delay="0.3s">
-            <h1 class="display-4 font-weight-bold">Lorem ipsum</h1>
-            <hr class="hr-light">
-            <h6 class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi
-              fuga
-              nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
-              dolor molestiae, quisquam iste.</h6>
-            <a mdbBtn color="white" outline="true" mdbWavesEffect>Learn more</a>
-          </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mb-4">
-            <!--Form-->
-            <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
-              <mdb-card-body class="z-depth-2">
-                <!-- Default form login -->
-                <form class="text-center border border-light p-5" [formGroup]="loginForm">
-
-                  <p class="h4 mb-4">Sign in</p>
-
-                  <!-- Email -->
-                  <input formControlName="email" type="email" id="defaultLoginFormEmail" class="form-control mb-4"
-                    placeholder="E-mail">
-
-                  <!-- Password -->
-                  <input formControlName="password" type="password" id="defaultLoginFormPassword"
-                    class="form-control mb-4" placeholder="Password">
-
-                  <div class="d-flex justify-content-around">
-                    <div>
-                      <!-- Forgot password -->
-                      <a href="">Forgot password?</a>
-                    </div>
-                  </div>
-
-                  <!-- Sign in button -->
-                  <button [disabled]="disabled" (click)="loginInuser()" mdbBtn color="info" block="true" class="my-4"
-                    type="submit">{{label}}</button>
-
-                  <!-- Register -->
-                  <p>Not a member?
-                    <a href="">Register</a>
-                  </p>
-
-                  <!-- Social login -->
-                  <p>or sign in with:</p>
-
-                  <a type="button" class="blue-text mx-2">
-                    <mdb-icon fab icon="facebook"></mdb-icon>
-                  </a>
-                  <a type="button" class="light-blue-text mx-2">
-                    <mdb-icon fab icon="twitter"></mdb-icon>
-                  </a>
-                  <a type="button" class="red-text mx-2">
-                    <mdb-icon fab icon="google"></mdb-icon>
-                  </a>
-                </form>
-                <!-- Default form login -->
-              </mdb-card-body>
-            </mdb-card>
-            <!--/.Form-->
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
+<div class="home-page-container" fxLayout="row" fxLayout.xs="column wrap" fxLayoutAlign.xs="">
+  <div class="left-side" fxHide="true" fxShow.gt-sm>
+    <div class="layer" fxLayout="column wrap" fxLayoutAlign="center center">
+      <div class="left-text" fxLayout="column wrap" fxLayoutAlign="center">
+        <h1>i-Dduuka</h1>
+        <br />
+        <h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
+          recusandae animi laboriosam ducimus earum velit maiores ex expedita
+          facilis neque dolore facere, quos ab at quibusdam laudantium officiis
+          aperiam suscipit.
+        </h3>
       </div>
-      <!-- Content -->
     </div>
-    <!-- Mask & flexbox options-->
   </div>
-  <!-- Full Page Intro -->
-</header>
-<!-- Main navigation -->
+  <div class="right-side" fxLayoutAlign.xs="column wrap">
+    <div class="login-card" fxLayout="column wrap" fxLayoutAlign="center center">
+      <h2>Welcome</h2>
+      <br />
+      <img
+        src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"
+        alt="profile" /><br />
+      <div [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="center center">
+        <div class="input-container">
+          <input type="email" formControlName="email" placeholder="Enter your email here" />
+        </div>
+        <br />
+        <div class="input-container">
+          <input type="password" formControlName="password" placeholder="Enter your password here" />
+        </div>
+        <br />
+        <button class="login-btn" type="submit" [disabled]="disabled" (click)="logInuser()">{{label}}</button><br />
+        <a href="">Forgot password?</a><br />
+        <!-- <div class="social-btns">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z" />
+            <path fill="#fff"
+              d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z" />
+          </svg>
+          <button>twitter</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

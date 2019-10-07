@@ -1,0 +1,25 @@
+<div class="profile-card" fxLayout="column wrap">
+  <div class="profile-pics" fxLayout="column wrap" fxLayoutAlign="center center">
+    <img
+      src="https://res.cloudinary.com/dejlomtqs/image/upload/v1570115308/graffiti-1874452_1920_dbgivq.jpg"
+      alt="cover"
+      class="cover-photo"
+    >
+    <img
+      src="https://res.cloudinary.com/dejlomtqs/image/upload/v1570115241/trigger_jwtc9w.jpg"
+      alt="profile"
+      class="profile-photo"
+    >
+  </div>
+  <div class="profile-info" fxLayout="column wrap" fxLayoutAlign="start center">
+    <h4>Joshua Lugada</h4>
+    <i class="fas fa-envelope"></i>
+    <p>lugjosh@gmail.com</p>
+    <i class="far fa-calendar-alt"></i>
+    <p>{{ dateOfRegistration || today | date }}</p>
+    <i class="fas fa-mobile"></i>
+    <p>+256-703 720473</p>
+    <i class="fas fa-map-marker-alt"></i>
+    <p>Kampala, Uganda</p>
+  </div>
+</div>
