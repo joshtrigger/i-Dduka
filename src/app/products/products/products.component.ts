@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/shared/http.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ export class ProductsComponent implements OnInit {
   products: Array<Object>;
   loading: Boolean;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private store: Store<any>) {}
 
   ngOnInit() {
     this.getAllProducts();
