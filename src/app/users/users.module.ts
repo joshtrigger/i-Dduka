@@ -4,13 +4,15 @@ import { UsersRoutingModule } from './users-routing.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
     UsersRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forFeature('users',{})
   ],
   exports: [],
   declarations: [HomePageComponent],

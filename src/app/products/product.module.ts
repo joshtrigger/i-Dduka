@@ -7,9 +7,15 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../users/profile/profile.component';
 import { LoaderComponent } from '../shared/components/loader/loader.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
-  imports: [ProductsRoutingModule, CommonModule, FlexLayoutModule],
+  imports: [
+    ProductsRoutingModule,
+    CommonModule,
+    FlexLayoutModule,
+    StoreModule.forFeature('products', {})
+  ],
   exports: [],
   declarations: [
     ProductsComponent,
