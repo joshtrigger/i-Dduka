@@ -12,12 +12,17 @@ export class ProfileComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.findMe()
   }
 
   findMe() {
     navigator.geolocation.getCurrentPosition(position => {
       this.loc(position);
     });
+  }
+
+  showPosition(position){
+    
   }
 
   loc(value) {

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreModule } from '@ngrx/store';
+import { UsersReducer } from '../reducers/users.reducer';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    StoreModule.forFeature('users',{})
+    StoreModule.forFeature('users', {})
   ],
   exports: [],
   declarations: [HomePageComponent],
