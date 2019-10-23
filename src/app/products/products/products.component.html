@@ -10,7 +10,7 @@ gdColumns="25% auto"
   <h2>Products</h2>
 </div>
 <div gdArea="side" class="profile">
-  <app-profile></app-profile>
+  <app-profile *ngIf="!loading"></app-profile>
 </div>
 <div gdArea="content" class="products">
   <div fxLayout="row wrap" fxLayoutAlign="start end">

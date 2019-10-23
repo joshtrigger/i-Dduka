@@ -17,10 +17,12 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/product.module';
 import { OrdersModule } from './orders/orders.module';
 import { httpInterceptorProviders } from './shared/interceptors';
+import { ProductFormComponent } from './shared/components/product-form/product-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     SanitizerPipe,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
