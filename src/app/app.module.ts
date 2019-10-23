@@ -16,6 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/product.module';
 import { OrdersModule } from './orders/orders.module';
+import { httpInterceptorProviders } from './shared/interceptors';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { OrdersModule } from './orders/orders.module';
     ProductsModule,
     OrdersModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

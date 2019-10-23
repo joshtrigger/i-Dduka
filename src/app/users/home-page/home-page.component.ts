@@ -58,6 +58,7 @@ export class HomePageComponent implements OnInit {
     const url = 'https://safe-tundra-59834.herokuapp.com/user/login';
     this.userService.login(url, this.loginForm.value).subscribe(
       value => {
+        localStorage.setItem('authToken', value.token)
         this.router.navigateByUrl('/products')
       },
       err => {

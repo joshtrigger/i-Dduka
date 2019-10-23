@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/shared/http.service';
 import { Store } from '@ngrx/store';
+import { AppConfig } from '../../config';
 
 @Component({
   selector: 'app-products',
@@ -8,7 +9,6 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  url: String = 'https://safe-tundra-59834.herokuapp.com/products';
   products: Array<Object>;
   loading: Boolean;
 
@@ -18,19 +18,19 @@ export class ProductsComponent implements OnInit {
     this.getAllProducts();
   }
 
-  showLoader(){
+  showLoader() {
     this.loading = true;
   }
 
-  hideLoader(){
+  hideLoader() {
     this.loading = false;
   }
-  getAllProducts():void {
-    this.showLoader()
-    this.httpService.get(this.url).subscribe(
+  getAllProducts(): void {
+    this.showLoader();
+    this.httpService.get(`${AppConfig.BASE_URL}/products`).subscribe(
       value => {
         this.products = value;
-        this.hideLoader()
+        this.hideLoader();
       },
       err => {
         console.log(err);
@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  placeOrder(event):void {
+  placeOrder(event): void {
     console.log(event);
   }
 }

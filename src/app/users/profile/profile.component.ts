@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/shared/http.service';
+import { AppConfig } from 'src/app/config';
 
 @Component({
   selector: 'app-profile',
@@ -6,26 +8,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  dateOfRegistration: String = '2018-09-04T14:39:27.007Z';
-  today: Number = Date.now();
+  name: String;
+  location: String;
+  profilePic: String;
+  coverPhoto: String;
+  email: String;
+  phone: String;
+  DOR: String;
 
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.findMe()
+    this.getCurrentUserProfile();
   }
 
-  findMe() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.loc(position);
-    });
-  }
-
-  showPosition(position){
-    
-  }
-
-  loc(value) {
-    console.log(value);
+  getCurrentUserProfile() {
+    this.httpService.get(`${AppConfig.BASE_URL}/profile/user`).subscribe(
+      value => {
+        const { name, location, pictures, phone, login, email } = value.user;
+        this.name = `${name.first} ${name.middle} ${name.last}`;
+        this.location = `${location.city}, ${location.country}`;
+        this.email = email;
+        this.phone = phone;
+        this.profilePic = pictures.profilePic;
+        this.coverPhoto = pictures.coverPhoto;
+        this.DOR = login.dateOfRegistration;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
