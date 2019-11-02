@@ -9,12 +9,15 @@ import { LoaderComponent } from '../shared/components/loader/loader.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreModule } from '@ngrx/store';
 import { ProductReducer } from '../reducers/products.reducer';
+import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     ProductsRoutingModule,
     CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('products', {})
   ],
   exports: [],
@@ -22,7 +25,8 @@ import { ProductReducer } from '../reducers/products.reducer';
     ProductsComponent,
     ProductDetailComponent,
     ProfileComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProductFormComponent
   ],
   providers: []
 })

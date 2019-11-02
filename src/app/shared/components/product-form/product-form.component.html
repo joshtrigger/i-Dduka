@@ -1,14 +1,20 @@
 <div class="form-container" fxLayout="row wrap" fxLayoutAlign="center center">
-  <div class="form-card" fxLayout="column wrap" fxLayoutAlign="space-evenly">
+  <div class="form-card" fxLayout="column wrap" fxLayoutAlign="space-evenly" [formGroup]="productForm">
     <label>Product Name</label>
-    <input type="text" name="name" id="">
+    <input type="text" formControlName="name">
     <label>Price</label>
-    <input type="number" name="price" id="">
+    <input type="number" formControlName="price">
     <label>Description</label>
-    <textarea name="" id="" cols="20" rows="10"></textarea>
+    <textarea formControlName="description" cols="20" rows="10"></textarea>
     <label>Category</label>
-    <input type="text" name="category" id="">
-    <input type="file" name="image" id="">
-    <button type="submit">Add</button>
+    <select formControlName="category">
+      <option *ngFor="let category of categories">{{category}}</option>
+    </select>
+    <label>
+      <i class="fas fa-file-image"></i>
+        Choose image file
+      <input type="file" formControlName="image" (change)="readImage($event)">
+    </label>
+    <button type="submit" (click)="btnClick()" [disabled]="productForm.status==='INVALID'">Add</button>
   </div>
 </div>

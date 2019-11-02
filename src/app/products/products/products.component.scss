@@ -26,14 +26,14 @@
   }
   
   button{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 60px;
+    width: 60px;
     background-color: #3498db;
-    border: none;
     color: white;
     font-size: 30px;
-    font-weight: 200;
-
-    &:hover{
-      background-color: #56b2f0;
-    }
+    border-radius: 50%;
   }
 }

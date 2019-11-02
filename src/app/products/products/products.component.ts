@@ -11,6 +11,7 @@ import { AppConfig } from '../../config';
 export class ProductsComponent implements OnInit {
   products: Array<Object>;
   loading: Boolean;
+  showProductForm: Boolean;
 
   constructor(private httpService: HttpService, private store: Store<any>) {}
 
@@ -40,5 +41,9 @@ export class ProductsComponent implements OnInit {
 
   placeOrder(event): void {
     console.log(event);
+  }
+
+  addProduct(){
+    this.showProductForm=true;
   }
 }
