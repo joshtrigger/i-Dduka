@@ -23,6 +23,7 @@ export class HomePageComponent implements OnInit {
   url: string = 'user/login';
   disabled: boolean;
   label: string = 'Sign In';
+  errorMessage: string;
 
   constructor(
     private fb: FormBuilder,
@@ -35,10 +36,11 @@ export class HomePageComponent implements OnInit {
     this.disabled = true;
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     this.loginForm.valueChanges.subscribe(() => {
+      this.errorMessage = '';
       this.disabled = this.loginForm.valid ? false : true;
     });
   }
@@ -55,16 +57,20 @@ export class HomePageComponent implements OnInit {
 
   logInuser() {
     this.hideButton();
-    const url = 'https://safe-tundra-59834.herokuapp.com/user/login';
-    this.userService.login(url, this.loginForm.value).subscribe(
-      value => {
-        localStorage.setItem('authToken', value.token)
-        this.router.navigateByUrl('/products')
-      },
-      err => {
-        console.log(err);
-        this.showButton();
-      }
-    );
+    this.userService
+      .login(`${AppConfig.BASE_URL}/${this.url}`, this.loginForm.value)
+      .subscribe(
+        value => {
+          localStorage.setItem('authToken', value.token);
+          this.router.navigateByUrl('/products');
+        },
+        err => {
+          const {
+            error: { error }
+          } = err;
+          this.errorMessage = error;
+          this.showButton();
+        }
+      );
   }
 }

@@ -1,4 +1,7 @@
-<div class="form-container" fxLayout="row wrap" fxLayoutAlign="center center">
+<div fxHide="{{hideModal}}" class="form-container" fxLayout="column wrap" fxLayoutAlign="start center">
+  <div class="close-btn-wrapper" fxLayout="row wrap" fxLayoutAlign="end start">
+    <button class="close-btn" (click)="closeModal()">&times;</button>
+  </div>
   <div class="form-card" fxLayout="column wrap" fxLayoutAlign="space-evenly" [formGroup]="productForm">
     <label>Product Name</label>
     <input type="text" formControlName="name">

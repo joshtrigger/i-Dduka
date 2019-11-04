@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/fbbf8149d9e45bca310d/maintainability)](https://codeclimate.com/github/joshtrigger/i-Dduka/maintainability)
+
 # IDduka
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.

@@ -7,7 +7,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -22,12 +22,11 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
     return next.handle(newReq).pipe(
-      tap(() => {}),
-      catchError((err: any) => {
-        if(err instanceof HttpErrorResponse && err.status===401){
-          this.router.navigateByUrl('')
+      map((event: any) => {
+        if (event instanceof HttpErrorResponse && event.status === 401) {
+          this.router.navigateByUrl('');
         }
-        return of(err);
+        return event;
       })
     );
   }

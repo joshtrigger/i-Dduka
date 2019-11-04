@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -21,10 +21,13 @@ export class ProductFormComponent implements OnInit {
     'Others'
   ];
   path: any;
+  hideModal: Boolean;
+  @Output() notify: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.hideModal = false;
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
@@ -36,6 +39,11 @@ export class ProductFormComponent implements OnInit {
 
   btnClick(): void {
     console.log(this.productForm.value);
+  }
+
+  closeModal() {
+    this.hideModal = true;
+    this.notify.emit(true)
   }
 
   readImage(event): void {
