@@ -10,7 +10,7 @@ gdColumns="25% auto"
 <div class="nav-bar" fxLayout="row" fxLayoutAlign="center center" gdArea="header">
   <h2>Products</h2>
 </div>
-<div gdArea="side" class="profile">
+<div gdArea="side" class="profile" fxHide="true" fxShow.gt-sm>
   <app-profile *ngIf="!loading"></app-profile>
 </div>
 <div gdArea="content" class="products">

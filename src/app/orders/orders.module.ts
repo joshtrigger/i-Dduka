@@ -10,7 +10,7 @@ import { OrdersReducer } from '../reducers/orders.reducer';
     OrdersRoutingModule,
     CommonModule,
     FlexLayoutModule,
-    StoreModule.forFeature('orders', {})
+    StoreModule.forFeature('orders', OrdersReducer)
   ],
   exports: [],
   declarations: [],

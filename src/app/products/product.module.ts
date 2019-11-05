@@ -18,7 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('products', {})
+    StoreModule.forFeature('products', ProductReducer)
   ],
   exports: [],
   declarations: [

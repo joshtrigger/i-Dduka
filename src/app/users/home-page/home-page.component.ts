@@ -65,10 +65,7 @@ export class HomePageComponent implements OnInit {
           this.router.navigateByUrl('/products');
         },
         err => {
-          const {
-            error: { error }
-          } = err;
-          this.errorMessage = error;
+          this.errorMessage = err.error.error.message || err.error.error;
           this.showButton();
         }
       );

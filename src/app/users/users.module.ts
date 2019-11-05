@@ -13,7 +13,7 @@ import { UsersReducer } from '../reducers/users.reducer';
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    StoreModule.forFeature('users', {})
+    StoreModule.forFeature('users', UsersReducer)
   ],
   exports: [],
   declarations: [HomePageComponent],
