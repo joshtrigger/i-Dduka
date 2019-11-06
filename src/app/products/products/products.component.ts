@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/shared/http.service';
 import { Store, select } from '@ngrx/store';
 import { AppConfig } from '../../config';
+import { Product } from 'src/app/interfaces/product.interface';
+import { StoreState } from '../../interfaces/store.interface';
 
 @Component({
   selector: 'app-products',
@@ -9,11 +11,14 @@ import { AppConfig } from '../../config';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: Array<Object>;
+  products: Product[];
   loading: Boolean;
   showProductForm: Boolean = false;
 
-  constructor(private httpService: HttpService, private store: Store<any>) {}
+  constructor(
+    private httpService: HttpService,
+    private store: Store<StoreState>
+  ) {}
 
   ngOnInit() {
     this.getAllProducts();
@@ -34,12 +39,10 @@ export class ProductsComponent implements OnInit {
         this.store.dispatch({
           type: 'DISPLAY_PRODUCTS',
           payload: value
-        })
-        this.store.pipe(select('products')).subscribe(
-          products=>{
-            this.products = products.products;
-          }
-        )
+        });
+        this.store.pipe(select('products')).subscribe(products => {
+          this.products = products.products;
+        });
       },
       err => {
         console.log(err);
@@ -48,16 +51,19 @@ export class ProductsComponent implements OnInit {
   }
 
   placeOrder(event): void {
-    console.log(event);
+    this.store.dispatch({
+      type: 'SELECTED_PRODUCT',
+      payload: event
+    });
   }
 
-  notification(event) {
+  notification(event): void {
     if (event) {
       this.showProductForm = false;
     }
   }
 
-  addProduct() {
+  addProduct(): void {
     this.showProductForm = !this.showProductForm;
   }
 }
