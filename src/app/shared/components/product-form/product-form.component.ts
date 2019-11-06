@@ -38,7 +38,9 @@ export class ProductFormComponent implements OnInit {
   }
 
   btnClick(): void {
-    console.log(this.productForm.value);
+    const formData= new FormData()
+    // formData.append('file', this.productForm.get('image').value)
+    console.log(formData)
   }
 
   closeModal() {
@@ -49,9 +51,9 @@ export class ProductFormComponent implements OnInit {
   readImage(event): void {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = () => (this.path = reader.result);
-      reader.readAsDataURL(file);
+      console.log(file)
+      this.productForm.get('image').setValue(file.name)
+      
     }
   }
 }

@@ -6,8 +6,8 @@ import {
   HttpEvent,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -25,8 +25,10 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse && err.status === 401) {
           this.router.navigateByUrl('');
+        } else if (err.status === 404) {
+          //redirect to not found page
         }
-        return of(err);
+        return throwError(err);
       })
     );
   }

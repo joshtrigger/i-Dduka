@@ -1,8 +1,8 @@
 <div fxHide="{{hideModal}}" class="form-container" fxLayout="column wrap" fxLayoutAlign="start center">
   <div class="close-btn-wrapper" fxLayout="row wrap" fxLayoutAlign="end start">
-    <button class="close-btn" (click)="closeModal()">&times;</button>
+    <button fxLayout="row wrap" fxLayoutAlign="center center" class="close-btn" (click)="closeModal()">&times;</button>
   </div>
-  <div class="form-card" fxLayout="column wrap" fxLayoutAlign="space-evenly" [formGroup]="productForm">
+  <form class="form-card" fxLayout="column wrap" fxLayoutAlign="space-evenly" [formGroup]="productForm">
     <label>Product Name</label>
     <input type="text" formControlName="name">
     <label>Price</label>
@@ -19,5 +19,5 @@
       <input type="file" formControlName="image" (change)="readImage($event)">
     </label>
     <button type="submit" (click)="btnClick()" [disabled]="productForm.status==='INVALID'">Add</button>
-  </div>
+  </form>
 </div>

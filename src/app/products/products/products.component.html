@@ -22,7 +22,7 @@ gdColumns="25% auto"
       [description]='product.description'
       [postedBy]='product.postedBy.username'
       [imageUrl]='product.imagePath'
-      (buttonClick)='placeOrder($event)'
+      (buttonClick)='placeOrder(product)'
       >
       </app-product-detail>
     </div>
