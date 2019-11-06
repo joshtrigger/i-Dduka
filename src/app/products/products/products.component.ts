@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/shared/http.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppConfig } from '../../config';
 
 @Component({
@@ -30,8 +30,16 @@ export class ProductsComponent implements OnInit {
     this.showLoader();
     this.httpService.get(`${AppConfig.BASE_URL}/products`).subscribe(
       value => {
-        this.products = value;
         this.hideLoader();
+        this.store.dispatch({
+          type: 'DISPLAY_PRODUCTS',
+          payload: value
+        })
+        this.store.pipe(select('products')).subscribe(
+          products=>{
+            this.products = products.products;
+          }
+        )
       },
       err => {
         console.log(err);

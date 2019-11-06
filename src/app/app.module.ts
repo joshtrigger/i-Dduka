@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { SanitizerPipe } from './pipes/sanitizers/sanitizer.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 

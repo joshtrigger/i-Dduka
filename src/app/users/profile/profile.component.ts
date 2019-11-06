@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/shared/http.service';
 import { AppConfig } from 'src/app/config';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   phone: String;
   DOR: String;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private store: Store<any>) {}
 
   ngOnInit() {
     this.getCurrentUserProfile();
@@ -25,14 +26,23 @@ export class ProfileComponent implements OnInit {
   getCurrentUserProfile() {
     this.httpService.get(`${AppConfig.BASE_URL}/profile/user`).subscribe(
       value => {
-        const { name, location, pictures, phone, login, email } = value.user;
-        this.name = `${name.first} ${name.middle} ${name.last}`;
-        this.location = `${location.city}, ${location.country}`;
-        this.email = email;
-        this.phone = phone;
-        this.profilePic = pictures.profilePic;
-        this.coverPhoto = pictures.coverPhoto;
-        this.DOR = login.dateOfRegistration;
+        this.store.dispatch({
+          type: 'CURRENT_USER_PROFILE',
+          payload: value
+        });
+        this.store.pipe(select('users')).subscribe(profile => {
+          const {
+            currentUser: { user }
+          } = profile;
+          const { name, location, pictures, phone, login, email } = user;
+          this.name = `${name.first} ${name.middle} ${name.last}`;
+          this.location = `${location.city}, ${location.country}`;
+          this.email = email;
+          this.phone = phone;
+          this.profilePic = pictures.profilePic;
+          this.coverPhoto = pictures.coverPhoto;
+          this.DOR = login.dateOfRegistration;
+        });
       },
       err => {
         console.log(err);
